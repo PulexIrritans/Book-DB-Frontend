@@ -19,6 +19,23 @@ function App() {
   })
 },[]);
 
+const saveBookToDatabase = (event, title, author, isbn, description, published_date, number_of_pages, publisher) => {
+  event.preventDefault()
+  const newBook = {title, author, isbn, description, published_date, number_of_pages, publisher}
+ 
+  fetch("http://localhost:3050/", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newBook),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setBooks(data);
+      });
+}
+
   return (
     <>
     <Header/>
@@ -27,7 +44,7 @@ function App() {
         <Route
           path="/create"
           element={
-            <CreatePage/>
+            <CreatePage saveBookToDatabase={saveBookToDatabase}/>
           }
         />
       </Routes>
