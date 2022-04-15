@@ -13,7 +13,7 @@ justify-content: space-around;
 `;
 
 const FooterLi = styled.li`
-padding: 1rem 0;
+padding: 1rem 1rem;
 &:hover{
 background-color: deeppink;
 }
@@ -26,8 +26,8 @@ let activeStyle = {
     return (
         <StyledFooter>
         <FooterUl>
-            <FooterLi>Bookshelf</FooterLi>
-            <FooterLi>Add Book</FooterLi>
+            <FooterLi><NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/">Bookshelf</NavLink></FooterLi>
+            <FooterLi><NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/random">Add Book</NavLink></FooterLi>
         </FooterUl>
         </StyledFooter>
     )
@@ -35,5 +35,5 @@ let activeStyle = {
 
 export default Footer
 
-//<NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/">Bookshelf</NavLink>
-//<NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/random">Add Book</NavLink>
+//
+//

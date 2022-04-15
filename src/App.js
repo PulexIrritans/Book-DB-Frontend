@@ -1,13 +1,23 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
-import Main from './Components/Main';
 import Footer from './Components/Footer';
+import BookshelfPage from './Pages/BookshelfPage';
+import CreatePage from './Pages/CreatePage';
 
 function App() {
   return (
     <>
     <Header/>
-    <Main/>
+    <Routes className="Routes">
+        <Route path="/" element={<BookshelfPage/>} />
+        <Route
+          path="/create"
+          element={
+            <CreatePage/>
+          }
+        />
+      </Routes>
     <Footer/>
     </>
   );
