@@ -14,19 +14,18 @@ flex-wrap: wrap;
 justify-content: space-between;
 `
 
-const Card = () => {
+const Card = ({ title, isbn, author, description, published_date, number_of_pages, publisher }) => {
     return (
         <CardLi>
-            <h2>Book Title</h2>
-            <p>by Author Name</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, quos. Quas quidem corporis ratione, deserunt iste libero vitae! Saepe, officiis fuga? Quibusdam, accusamus minima est suscipit et ea eos quaerat.</p>
+            <h2>{title}</h2>
+            <p>by {author}</p>
+            <p>{description}</p>
+            <p>Publ: {published_date}</p>
             <CardUl>
-                <li>Publ: Date</li>
-                <li>Pages: </li>
-                <li>Publisher:</li>
+                <li>Pages: {number_of_pages}</li>
+                <li>Publisher: {publisher}</li>
             </CardUl>
-            <p>ISBN: number </p>
-
+            <p>ISBN: {isbn}</p>
         </CardLi>
     )
 };

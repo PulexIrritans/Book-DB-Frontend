@@ -27,7 +27,7 @@ let activeStyle = {
         <StyledFooter>
         <FooterUl>
             <FooterLi><NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/">Bookshelf</NavLink></FooterLi>
-            <FooterLi><NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/random">Add Book</NavLink></FooterLi>
+            <FooterLi><NavLink style={({isActive}) => isActive ? activeStyle : undefined} to="/create">Add Book</NavLink></FooterLi>
         </FooterUl>
         </StyledFooter>
     )

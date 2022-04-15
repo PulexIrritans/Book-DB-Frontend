@@ -8,18 +8,22 @@ flex-wrap: wrap;
 gap: 20px;
 `
 
-const BookshelfPage = () => {
+const BookshelfPage = ({ books }) => {
 
     return (
         <main>
             <CardsList>
-                <Card/>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card/>
-                <Card/>
-
+                {books.map(book => (
+                    <Card
+                    key={book._id}
+                    title={book.title}
+                    author={book.author}
+                    isbn={book.isbn}
+                    description={book.description}
+                    published_date={book.published_date}
+                    number_of_pages={book.number_of_pages}
+                    publisher={book.publisher}/>
+                ))}
             </CardsList>
             
         </main>
