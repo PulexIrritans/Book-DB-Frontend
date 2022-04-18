@@ -22,10 +22,9 @@ function App() {
 function saveBookToDatabase(event, title, author, isbn, description, published_date, number_of_pages, publisher) {
   event.preventDefault();
   const newBook = {title, author, isbn, description, published_date, number_of_pages, publisher}
-  console.log(newBook)
  
   fetch("http://localhost:3050/", {
-      method: "PATCH", // or 'PUT'
+      method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
