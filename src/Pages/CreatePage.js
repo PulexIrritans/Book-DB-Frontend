@@ -1,18 +1,28 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
 
-const CreatePage = (saveBookToDatabase) => {
+const BookForm = styled.form`
+max-width: 80%;
+display: flex;
+flex-direction: column;
+`
 
-  const [title, setTitle] = useState(undefined);
-  const [author, setAuthor] = useState(undefined);
-  const [isbn, setISBN] = useState(undefined);
+const CreatePage = ({ saveBookToDatabase }) => {
+
+  const navigate = useNavigate();
+
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [isbn, setISBN] = useState("");
   const [description, setDescription] = useState("");
-  const [published_date, setPublishedDate] = useState(undefined);
-  const [number_of_pages, setNumberOfPages] = useState(null);
-  const [publisher, setPublisher] = useState(undefined)
+  const [published_date, setPublishedDate] = useState("");
+  const [number_of_pages, setNumberOfPages] = useState("");
+  const [publisher, setPublisher] = useState("")
 
     return (
         <main>
-        <form onSubmit={()=>{saveBookToDatabase(title, author, isbn, description, published_date, number_of_pages, publisher)}}>
+        <BookForm onSubmit={(event)=> {saveBookToDatabase(event, title, author, isbn, description, published_date, number_of_pages, publisher); navigate("/")}}>
         <label htmlFor="title">Title:</label>
         <input
           type="text"
@@ -50,7 +60,7 @@ const CreatePage = (saveBookToDatabase) => {
           }}
         ></input>
         <label htmlFor="description">Description:</label>
-        <input
+        <textarea
           type="text"
           id="description"
           name="description"
@@ -59,7 +69,7 @@ const CreatePage = (saveBookToDatabase) => {
           onChange={(event) => {
             setDescription(event.target.value);
           }}
-        ></input>
+        ></textarea>
          <label htmlFor="published_date">Published Date:</label>
         <input
           type="date"
@@ -94,7 +104,7 @@ const CreatePage = (saveBookToDatabase) => {
           }}
         ></input>
         <button>Save</button>
-      </form>
+      </BookForm>
         </main>
     )
 }

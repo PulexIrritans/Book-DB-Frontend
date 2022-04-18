@@ -19,12 +19,13 @@ function App() {
   })
 },[]);
 
-const saveBookToDatabase = (event, title, author, isbn, description, published_date, number_of_pages, publisher) => {
-  event.preventDefault()
+function saveBookToDatabase(event, title, author, isbn, description, published_date, number_of_pages, publisher) {
+  event.preventDefault();
   const newBook = {title, author, isbn, description, published_date, number_of_pages, publisher}
+  console.log(newBook)
  
   fetch("http://localhost:3050/", {
-      method: "POST", // or 'PUT'
+      method: "PATCH", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
@@ -33,8 +34,11 @@ const saveBookToDatabase = (event, title, author, isbn, description, published_d
       .then((response) => response.json())
       .then((data) => {
         setBooks(data);
-      });
+      }
+      );
 }
+
+console.log(books)
 
   return (
     <>
